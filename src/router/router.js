@@ -1,8 +1,8 @@
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
 import React from 'react'
-import Layout from '../layout';
+import Layout from 'layout';
 import Loader from 'components/loader/loader';
 const Home = lazy(() => import('pages/home/home'))
 const Product = lazy(() => import('pages/product'))
@@ -14,12 +14,12 @@ function MainRouter() {
         <BrowserRouter>
             <Suspense fallback={<Loader />}>
                 <Layout>
-                    <Switch>
-                        <Route path='/' component={Home} exact />
-                        <Route path='/product/:id' component={Product} exact />
-                        <Route path='/account' component={Account} exact />
-                        <Route path='/cart/:id?' component={Cart} />
-                    </Switch>
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/product/:id' element={<Product />} />
+                        <Route path='/account' element={<Account />} />
+                        <Route path='/cart/:id?' element={<Cart />} />
+                    </Routes>
                 </Layout>
             </Suspense>
         </BrowserRouter>

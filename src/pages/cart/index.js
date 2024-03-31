@@ -1,16 +1,17 @@
 import { useSelector, useDispatch } from "react-redux"
 import { addToCart, removeFromCart } from "../../actions/cartActions"
 import { useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ListGroup, Row, Col, Image, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { colors } from "layout/theme/colors";
 
-function Cart({ match }) {
+function Cart() {
     const dispatch = useDispatch();
     const { cartItems } = useSelector(state => state.cart)
-    const productId = match.params.id;
+    const params = useParams()
+    const productId = params.id;
 
     useEffect(() => {
         if (productId) {

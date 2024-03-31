@@ -1,21 +1,23 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Button, Card, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { productDetailAction } from '../../actions/productAction'
 
 
-function Product({ history, match }) {
+function Product() {
 
     const dispatch = useDispatch();
     const { product, loading } = useSelector((state) => state.productDetail);
+    const params = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
-        dispatch(productDetailAction(match.params.id));
-    }, [dispatch, match.params])
+        dispatch(productDetailAction(params.id));
+    }, [params.id, dispatch])
 
     const addProductToCartHandler = () => {
-        history.push(`/cart/${match.params.id}`)
+        navigate(`/cart/${params.id}`)
     }
 
     return (
@@ -55,7 +57,7 @@ function Product({ history, match }) {
                     </Col>
                 </Row>
             }
-            <Link to="/" className="btn btn-dark">بازگشت به صفحه اصلی</Link>
+            <NavLink to="/" className="btn btn-dark">بازگشت به صفحه اصلی</NavLink>
         </div>
     )
 }
