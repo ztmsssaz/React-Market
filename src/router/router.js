@@ -7,7 +7,7 @@ import Loader from 'components/loader/loader';
 const Home = lazy(() => import('pages/home/home'))
 const Product = lazy(() => import('pages/product'))
 const Account = lazy(() => import('pages/account'))
-const Card = lazy(() => import('pages/card'))
+const Cart = lazy(() => import('pages/cart'))
 
 function MainRouter() {
     return (
@@ -18,7 +18,7 @@ function MainRouter() {
                         <Route path='/' component={Home} exact />
                         <Route path='/product/:id' component={Product} exact />
                         <Route path='/account' component={Account} exact />
-                        <Route path='/card' component={Card} exact />
+                        <Route path='/cart/:id?' component={Cart} />
                     </Switch>
                 </Layout>
             </Suspense>

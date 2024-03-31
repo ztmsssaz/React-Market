@@ -18,7 +18,7 @@ function Header() {
                                 <FontAwesomeIcon icon={faUser} inverse ></FontAwesomeIcon>
                             </Nav.Link >
                         </LinkContainer>
-                        <LinkContainer to="/card">
+                        <LinkContainer to="/cart">
                             <Nav.Link >
                                 <FontAwesomeIcon icon={faShoppingCart} inverse ></FontAwesomeIcon>
                             </Nav.Link >

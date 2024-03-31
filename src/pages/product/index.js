@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { productDetailAction } from '../../actions/productAction'
 
 
-function Product({ match }) {
+function Product({ history, match }) {
 
     const dispatch = useDispatch();
     const { product, loading } = useSelector((state) => state.productDetail);
@@ -14,6 +14,9 @@ function Product({ match }) {
         dispatch(productDetailAction(match.params.id));
     }, [dispatch, match.params])
 
+    const addProductToCartHandler = () => {
+        history.push(`/cart/${match.params.id}`)
+    }
 
     return (
         <div>
@@ -46,7 +49,7 @@ function Product({ match }) {
                     <Col md={3} >
                         <ListGroup variant="flush" className="text-center">
                             <ListGroup.Item>
-                                <Button className="btn btn-block btn-success">افزودن به سبد خرید</Button>
+                                <Button onClick={addProductToCartHandler} className="btn btn-block btn-success">افزودن به سبد خرید</Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Col>

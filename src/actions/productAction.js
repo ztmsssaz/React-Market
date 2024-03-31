@@ -13,7 +13,6 @@ export const productListAction = () => async (dispatch) => {
 }
 
 export const productDetailAction = (id) => async (dispatch) => {
-    console.log('productDetailAction')
     try {
         dispatch({ type: 'PRODUCT_DETAIL_REQUEST' })
         const { data } = await getRequest(`/products/${id}`)

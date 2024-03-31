@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
-import { Col, Row } from 'react-bootstrap'
+import { Col, Row, Spinner } from 'react-bootstrap'
 import Product from 'components/product'
-// import { connect } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { productListAction } from '../../actions/productAction'
 
@@ -11,7 +10,6 @@ function Home() {
     const { products, loading } = useSelector((state) => state.productList);
 
     useEffect(() => {
-        console.log(products)
         dispatch(productListAction());
     }, [dispatch])
 
@@ -19,7 +17,9 @@ function Home() {
         <div className='text-center'>
             <h1>محصولات</h1>
 
-            {loading ? <h2>درحال دریافت اطلاعات</h2>
+            {loading ? <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
                 : <Row>
                     {products.map((item) => {
                         return (
