@@ -9,6 +9,7 @@ function Product() {
 
     const dispatch = useDispatch();
     const { product, loading } = useSelector((state) => state.productDetail);
+    const { token } = useSelector((state) => state.user);
     const params = useParams()
     const navigate = useNavigate()
 
@@ -17,7 +18,11 @@ function Product() {
     }, [params.id, dispatch])
 
     const addProductToCartHandler = () => {
-        navigate(`/cart/${params.id}`)
+        if (token) {
+            navigate(`/cart/${params.id}`)
+        } else {
+            alert('ابتدا باید وارد شوید')
+        }
     }
 
     return (
@@ -51,7 +56,8 @@ function Product() {
                     <Col md={3} >
                         <ListGroup variant="flush" className="text-center">
                             <ListGroup.Item>
-                                <Button onClick={addProductToCartHandler} className="btn btn-block btn-success">افزودن به سبد خرید</Button>
+                                <Button onClick={addProductToCartHandler}
+                                    className="btn btn-block btn-success">افزودن به سبد خرید</Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Col>

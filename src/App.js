@@ -3,9 +3,7 @@ import MainRouter from './router/router';
 
 function App() {
   return (
-    <>
-      <MainRouter />
-    </>
+    <MainRouter />
   );
 }
 

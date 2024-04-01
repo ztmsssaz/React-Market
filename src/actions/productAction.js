@@ -6,7 +6,6 @@ export const productListAction = () => async (dispatch) => {
         dispatch({ type: 'PRODUCT_LIST_REQUEST' })
         const { data } = await getRequest('/products')
         dispatch({ type: 'PRODUCT_LIST_SUCCESS', payload: { value: data } })
-
     } catch (error) {
         console.log(error)
     }
